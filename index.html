@@ -1,1 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Luxe Lab Prompts</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0b0b10;
+    color: #ffffff;
+}
+
+header {
+    text-align: center;
+    padding: 45px 20px 30px;
+    background: linear-gradient(180deg, #17121d, #0b0b10);
+}
+
+.logo {
+    font-size: 34px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.subtitle {
+    margin-top: 10px;
+    color: #b9a9c9;
+    font-size: 14px;
+}
+
+.container {
+    max-width: 700px;
+    margin: auto;
+    padding: 20px;
+}
+
+.search {
+    width: 100%;
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid #3a3042;
+    background: #15131a;
+    color: white;
+    font-size: 15px;
+    outline: none;
+    margin-bottom: 25px;
+}
+
+.card {
+    background: #15131a;
+    border: 1px solid #33283b;
+    border-radius: 18px;
+    padding: 22px;
+    margin-bottom: 20px;
+}
+
+.card h2 {
+    margin-top: 0;
+    font-size: 19px;
+}
+
+.card p {
+    color: #aaa0b1;
+    font-size: 13px;
+}
+
+.prompt {
+    background: #0b0b10;
+    border: 1px solid #29232f;
+    border-radius: 12px;
+    padding: 15px;
+    margin-top: 15px;
+    white-space: pre-wrap;
+    line-height: 1.6;
+    font-size: 13px;
+    color: #ddd;
+}
+
+button {
+    width: 100%;
+    margin-top: 15px;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    background: #ffffff;
+    color: #0b0b10;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+footer {
+    text-align: center;
+    padding: 35px 20px;
+    color: #756a7d;
+    font-size: 12px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">LUXE LAB</div>
+    <div class="subtitle">PROMPTS EXCLUSIVOS</div>
+</header>
+
+<div class="container">
+
+    <input
+        class="search"
+        type="text"
+        id="search"
+        placeholder="🔎 Pesquisar prompt..."
+        onkeyup="searchPrompts()"
+    >
+
+    <div class="card">
+        <h2>✦ Prompt 01 — Casal IMVU</h2>
+        <p>Prompt para criação de imagem de casal.</p>
+
+        <div class="prompt" id="prompt1">THIS IS A FICTIONAL IMVU AVATAR COUPLE.
+
+DO NOT ALTER ANY FEATURES OF EITHER IMVU AVATAR.
+
+Create an ultra-realistic IMVU-inspired 3D render while preserving the identity, facial structure, proportions, clothing, accessories, pose and overall appearance of both fictional avatars.
+
+Maintain realistic skin texture, detailed hair, cinematic lighting, natural shadows and high-quality Blender rendering.
+
+8K UHD, ultra-detailed, sharp focus, realistic materials, professional composition.</div>
+
+        <button onclick="copyPrompt('prompt1', this)">
+            📋 COPIAR PROMPT
+        </button>
+    </div>
+
+    <div class="card">
+        <h2>✦ Prompt 02 — Head IMVU</h2>
+        <p>Prompt para criação de head mantendo a identidade do avatar.</p>
+
+        <div class="prompt" id="prompt2">FICTIONAL IMVU AVATAR — IDENTITY LOCK.
+
+Preserve the original avatar's facial structure, proportions, eyes, nose, lips, jawline and overall identity.
+
+Do not change the avatar's defining facial characteristics.
+
+Create an ultra-realistic Blender 3D render with detailed skin texture, realistic hair, cinematic lighting and professional studio quality.
+
+8K UHD, highly detailed, sharp focus, realistic materials.</div>
+
+        <button onclick="copyPrompt('prompt2', this)">
+            📋 COPIAR PROMPT
+        </button>
+    </div>
+
+</div>
+
+<footer>
+    © 2026 Luxe Lab • Prompts exclusivos
+</footer>
+
+<script>
+function copyPrompt(id, button) {
+    const text = document.getElementById(id).innerText;
+
+    navigator.clipboard.writeText(text).then(() => {
+        const original = button.innerText;
+        button.innerText = "✓ PROMPT COPIADO!";
+
+        setTimeout(() => {
+            button.innerText = original;
+        }, 1800);
+    });
+}
+
+function searchPrompts() {
+    const search = document.getElementById("search").value.toLowerCase();
+    const cards = document.querySelectorAll(".card");
+
+    cards.forEach(card => {
+        const text = card.innerText.toLowerCase();
+
+        if (text.includes(search)) {
+            card.style.display = "block";
+        } else {
+            card.style.display = "none";
+        }
+    });
+}
+</script>
+
+</body>
+</html>
